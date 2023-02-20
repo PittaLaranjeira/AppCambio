@@ -1,20 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      APP Cotações
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="ion-padding">
+    <form #form="ngForm">
+      <ion-item>
+        <ion-label position="floating">Cotação Dólar</ion-label>
+        <ion-input disabled value="{{cambio.USDBRL.ask}}" ngModel></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cotação Euro</ion-label>
+        <ion-input disabled value="{{cambio.EURBRL.ask}}" ngModel></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="buscar()">Buscar Cotações</ion-button>
+    </form>
   </div>
 </ion-content>

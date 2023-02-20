@@ -7,6 +7,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor() { }
 
+  cambio = {}
+
+  buscar() {
+    fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL")
+      .then(function (dados) {
+        return dados.json()
+      }).then((dadosRetornados) => {
+        console.log(dadosRetornados)
+        this.cambio = { ...dadosRetornados };
+        console.log(this.cambio);
+      })
+  }
 }
