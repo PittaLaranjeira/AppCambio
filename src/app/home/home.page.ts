@@ -9,7 +9,14 @@ export class HomePage {
 
   constructor() { }
 
-  cambio = {}
+  cambio: any = {}
+
+  resultado;
+  resultado1;
+  resultado2;
+  resultado3;
+  txdolar;
+  txeuro;
 
   buscar() {
     fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL")
@@ -21,4 +28,56 @@ export class HomePage {
         console.log(this.cambio);
       })
   }
+
+  convrd(formu) {
+    this.buscar();
+    const vconv = formu.value.vconv;
+    const txdolar = this.cambio.USDBRL.ask;
+    ''
+    this.resultado = parseFloat(vconv) / parseFloat(txdolar);
+  }
+
+  convre(formu) {
+    this.buscar();
+    const vconv = formu.value.vconv;
+    const txeuro = this.cambio.EURBRL.ask;
+
+    this.resultado = parseFloat(vconv) / parseFloat(txeuro);
+  }
+
+  convdr(formu) {
+    this.buscar();
+    const vconv = formu.value.vconv;
+    const txdolar = this.cambio.USDBRL.ask;
+
+    this.resultado = parseFloat(vconv) * parseFloat(txdolar);
+  }
+
+  conver(formu) {
+    this.buscar();
+    const vconv = formu.value.vconv;
+    const txeuro = this.cambio.EURBRL.ask;
+
+    this.resultado = parseFloat(vconv) * parseFloat(txeuro);
+  }
+
+  convde(formu){
+    this.buscar();
+    const vconv = formu.value.vconv;
+    const txeuro = this.cambio.EURBRL.ask;
+    const txdolar = this.cambio.USDBRL.ask;
+
+    this.resultado = parseFloat(vconv) / parseFloat(txdolar) * parseFloat(txeuro);
+  }
+
+  conved(formu){
+    this.buscar();
+    const vconv = formu.value.vconv;
+    const txeuro = this.cambio.EURBRL.ask;
+    const txdolar = this.cambio.USDBRL.ask;
+
+    this.resultado = parseFloat(vconv) / parseFloat(txeuro) * parseFloat(txdolar);
+  }
+
+
 }

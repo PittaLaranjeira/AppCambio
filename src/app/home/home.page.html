@@ -1,23 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      APP Cotações
+      APP CONVERSÃO CAMBIO
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="ion-padding">
-    <form #form="ngForm">
-      <ion-item>
-        <ion-label position="floating">Cotação Dólar</ion-label>
-        <ion-input disabled value="{{cambio.USDBRL.ask}}" ngModel></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Cotação Euro</ion-label>
-        <ion-input disabled value="{{cambio.EURBRL.ask}}" ngModel></ion-input>
-      </ion-item>
-      <ion-button expand="block" (click)="buscar()">Buscar Cotações</ion-button>
-    </form>
-  </div>
+ <form #formulario="ngForm">
+    <br>
+    <ion-item>
+      <ion-label position="floating">Taxa de Dólar: </ion-label>
+      <ion-input disabled value="{{cambio.USDBRL.ask}}"></ion-input>
+    </ion-item><br>
+    <ion-item>
+      <ion-label position="floating">Taxa de Euro: </ion-label>
+      <ion-input disabled value="{{cambio.EURBRL.ask}}"></ion-input>
+    </ion-item><br>
+
+    <ion-button expand="block" (click)="buscar()">Buscar Cotações</ion-button>
+    <br><br>
+
+    <h4>Conversão de Moedas</h4>
+    <br>
+    <ion-item>
+      <ion-label position="floating">Valor a ser convertido: </ion-label>
+      <ion-input name="vconv" ngModel></ion-input>
+    </ion-item><br><br>
+    <ion-button (click)="convdr(formulario)">Dólar p/ Real</ion-button>
+    <ion-button (click)="convde(formulario)">Dólar p/ Euro</ion-button>
+    <ion-button (click)="conver(formulario)">Euro p/ Real</ion-button>
+    <ion-button (click)="conved(formulario)">Euro p/ Dólar</ion-button>
+    <ion-button (click)="convrd(formulario)">Real p/ Dólar</ion-button>
+    <ion-button (click)="convre(formulario)">Real p/ Euro</ion-button>
+    <br><br>
+    <ion-item>
+      <ion-label position="floating">Valor convertido: </ion-label>
+      <ion-input disabled value="{{resultado}}"></ion-input>
+    </ion-item>
+    <br>
+  </form>
 </ion-content>
